@@ -2,7 +2,7 @@
 //test  
 //gui test
 // require('./oracletest');
-require('./csv/csvtest');
+// require('./csv/csvtest');
 
 // var set = new Set();  
 // set.add("a").add("b").add("d").add("c");  
@@ -23,7 +23,7 @@ require('./csv/csvtest');
 // for(let k in A) {  
 //     console.log(k,A[k]);  
 // } 
-// var array = [1,2,3,4,5,6,7];  
+// var array = [11,22,33,44,55,66,77];  
 // for (var i = 0; i < array.length; i++) {  
 //     console.log(i,array[i]);  
 // }  
@@ -36,16 +36,16 @@ require('./csv/csvtest');
 // for (const iterator of array) {
 //     console.log(iterator);
 // }
-// array.forEach(element => {
-//     console.log(element); 
+// array.forEach((element, index) => {
+//     console.log(`element: ${element}, index :${index}`); 
 // });
 
-// fs = require("fs");
-// let data = fs.readFileSync("./configdata.json",'utf-8');
-// data = JSON.parse(data);
-// for (const key in data) {
-//     console.log(key, data[key])
-// }
+fs = require("fs");
+let data = fs.readFileSync("./configdata.json",'utf-8');
+data = JSON.parse(data);
+for (const key in data) {
+    console.log(key, data[key])
+}
 
 
 // const person1 = {

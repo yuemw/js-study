@@ -1,2 +1,2 @@
 //入口文件
-require('./ws/wsserver');
+require('./webservice/webserveice');

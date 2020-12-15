@@ -40,13 +40,6 @@
 //     console.log(`element: ${element}, index :${index}`); 
 // });
 
-fs = require("fs");
-let data = fs.readFileSync("./configdata.json",'utf-8');
-data = JSON.parse(data);
-for (const key in data) {
-    console.log(key, data[key])
-}
-
 
 // const person1 = {
 //     fname: "san",
@@ -57,3 +50,5 @@ for (const key in data) {
 // for(info in person1) {
 //     console.log("person[" + info + "] = " + person1[info]);
 // }
+
+require('./apitest')

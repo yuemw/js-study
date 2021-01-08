@@ -1,0 +1,4 @@
+1.将swagger文件夹放置到英文文件夹下。
+2.在步骤1启动cmd，安装http-server
+3.cmd中输入  http-server  swagger-editor-3.8.0
+4.根据提示信息  在浏览器中输入127.0.0.1：port

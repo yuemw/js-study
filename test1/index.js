@@ -1,8 +1,9 @@
-
 //test  
 //gui test
 // require('./oracletest');
 // require('./csv/csvtest');
+
+const { promises } = require("fs");
 
 // var set = new Set();  
 // set.add("a").add("b").add("d").add("c");  
@@ -51,4 +52,43 @@
 //     console.log("person[" + info + "] = " + person1[info]);
 // }
 
-require('./apitest')
+
+async function test(ctx, next) {
+    var pro = new Promise();
+    await doThing().then(console.log('exec'));
+    doAnotherThing();
+    console.log('this way');
+}
+
+async function doThing() {
+    
+    await doA();
+    await doB();
+    console.log('do do do thing');
+}
+
+function doAnotherThing() {
+    console.log('do another thing')
+}
+
+async function doA() {
+    console.log(' A');
+    return new Promise(resove => {
+        setTimeout(() => {
+            console.log('done A')
+            resove();
+        }, 1000)
+    })
+}
+
+async function doB() {
+    console.log(' B');
+    return new Promise(resove => {
+        setTimeout(() => {
+            console.log('done B')
+            resove();
+        }, 100)
+    })
+}
+
+test();

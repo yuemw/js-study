@@ -1,0 +1,10 @@
+package awesomepackage;
+syntax = "proto3";
+
+message AwesomeMessage {
+    string awesome_field = 1; // becomes awesomeField
+}
+message Yuemw{
+   int32 id = 1;
+   string name = 2;
+}

@@ -4,7 +4,7 @@
  * @Autor: ymw
  * @Date: 2021-03-02 11:15:04
  * @LastEditors: ymw
- * @LastEditTime: 2021-03-02 16:18:12
+ * @LastEditTime: 2021-03-11 15:41:25
  */
 
 var request = require("supertest");
@@ -79,8 +79,6 @@ describe("#test express app",function(){//http测试
         })
     })
 })
-
-
 
 
 // var express = require('express');

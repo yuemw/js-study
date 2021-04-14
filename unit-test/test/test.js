@@ -4,7 +4,7 @@
  * @Autor: ymw
  * @Date: 2021-02-25 18:57:36
  * @LastEditors: ymw
- * @LastEditTime: 2021-03-02 15:57:10
+ * @LastEditTime: 2021-03-11 15:38:45
  */
 
 var should = require('should');
@@ -36,8 +36,8 @@ it("should return undefined", function () {
 });
 
 it("should return 10", function(){
-    var sum = test.add(5, 5);
-    assert.equal(sum, 10);
+    var sum = test.add("5", "5");
+    assert.equal(sum, undefined);
 });
 */
 
@@ -69,7 +69,7 @@ it("should return undefined", function () {
     var c = test.merge(a);
     (typeof c).should.equal("undefined");
 });
-
+*/
 //同步测试&&测试组定义
 /*
 var assert = require("assert");

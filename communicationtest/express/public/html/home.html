@@ -1,0 +1,31 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: lhl
+ * @Date: 2021-02-24 18:20:12
+ * @LastEditors: ymw
+ * @LastEditTime: 2021-04-21 11:07:19
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>router test</title>
+</head>
+<body>
+    <h1>页面测试</h1>
+    <form action="/changed" method="POST">
+        First name: <input type="text" name="firstname"><br>
+        Last name: <input type="text" name="lastname"><br>
+        <input type="radio" name="sex" value="male">man
+        <input type="radio" name="sex" value="female">woman4<br>
+        <input type="submit" name="submit" value="test">
+    </form>
+
+    <form action="/process" method="POST">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        Favorite color: <input type="text" name="favoriteColor">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

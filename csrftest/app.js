@@ -4,7 +4,7 @@
  * @Autor: ymw
  * @Date: 2021-04-21 13:31:09
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-22 16:38:25
+ * @LastEditTime: 2021-04-22 16:44:01
  */
 var cookieParser = require('cookie-parser');
 var csrf = require('csurf');
@@ -25,13 +25,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
 // we need this because "cookie" is true in csrfProtection
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(csrf({
-  cookie: true
-}));
+app.use(csrf({cookie: true}));
 
 app.use(function (err, req, res, next) {
   if (err.code !== 'EBADCSRFTOKEN')
@@ -51,32 +47,7 @@ router.get('/', function (req, res) {
   })
 });
 
-// router.get('/', function(req, res){
-//   console.log('req has csrf token' + req.csrfToken());
-
-//   fs.readFile('F:/program/js/csrftest/abc.html', function (err, data) {
-//     if (err) {
-//        console.log(err);
-//        res.writeHead(404, {'Content-Type': 'text/html'});
-//     }else{             
-//        res.writeHead(200, {'Content-Type': 'text/html'});    
-//        // 响应文件内容
-//        res.write(data.toString());        
-//     }
-//     res.locals.csrfToken = req.csrfToken ? req.csrfToken() : '';
-//     res.end();
-//   });
-// })
-
-router.get('/form', function (req, res) {
-  // pass the csrfToken to the view
-  console.log(req.csrfToken());
-  // res.send(req.csrfToken());
-  res.render('form', {
-    csrfToken: req.csrfToken()
-  });
-})
-
+//process submit info
 router.post('/process', function (req, res) {
   res.send('data is being processed');
   console.log('post cmd csrf token :' + req.csrfToken());

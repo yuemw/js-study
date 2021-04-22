@@ -4,7 +4,7 @@
  * @Autor: lhl
  * @Date: 2020-07-17 21:17:15
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-21 11:11:18
+ * @LastEditTime: 2021-04-21 15:44:09
  */
 var express = require('express');
 var fs = require('fs');
@@ -13,6 +13,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
   fs.readFile('F:/program/js/communicationtest/express/public/html/home.html', function (err, data) {
     if (err) {
        console.log(err)

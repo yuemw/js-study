@@ -1,0 +1,26 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: lhl
+ * @Date: 2021-02-24 18:20:12
+ * @LastEditors: ymw
+ * @LastEditTime: 2021-04-21 16:37:33
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSRF test</title>
+</head>
+<body>
+    <h6>CSRF测试</h2>
+      <form action="/process" method="POST">
+        Favorite color: <input type="text" name="favoriteColor">
+        <button type="submit">Submit</button>
+      </form>
+      <input type="hidden" class="form-control" name="_csrf" value="<%= csrfToken %>">
+    <!--
+      <input type="hidden" class="form-control" name="_csrf" value="{{csrfToken}}"> 
+    --> 
+      
+</body>

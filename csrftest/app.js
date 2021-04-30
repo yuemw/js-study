@@ -4,15 +4,14 @@
  * @Autor: ymw
  * @Date: 2021-04-21 13:31:09
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-22 16:44:01
+ * @LastEditTime: 2021-04-29 15:56:31
  */
 var cookieParser = require('cookie-parser');
 var csrf = require('csurf');
 var bodyParser = require('body-parser');
 var express = require('express');
-var ejs = require('ejs');
 var path = require('path');
-var fs = require('fs');
+
 
 // create express app
 var app = express();
@@ -27,7 +26,7 @@ app.set('view engine', 'html');
 // we need this because "cookie" is true in csrfProtection
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(csrf({cookie: true}));
+app.use(csrf({cookie: true, ignoreMethods: ['GET','HEAD','OPTIONS']}));
 
 app.use(function (err, req, res, next) {
   if (err.code !== 'EBADCSRFTOKEN')
@@ -42,18 +41,39 @@ app.use(function (err, req, res, next) {
 var router = new express.Router();
 router.get('/', function (req, res) {
   // 把生成的csrfToken写入到index.html中去
-  res.render('index', {
-    csrfToken: req.csrfToken()
-  })
+  let token = req.csrfToken();
+  console.log('update token: ' + token);
+  res.render('index', {csrfToken: token});
+});
+
+router.get('/mydata', function (req, res) {
+  // 把生成的csrfToken写入到index.html中去
+  res.send('ok');
 });
 
 //process submit info
 router.post('/process', function (req, res) {
-  res.send('data is being processed');
-  console.log('post cmd csrf token :' + req.csrfToken());
+  let showdata = `<!DOCTYPE html> \
+  <html>\
+  <head>\
+  <meta charset="utf-8"> \
+  <title>CSRF test</title> \
+  </head> \
+  <body> \
+  <a href="http://192.168.2.54:9999" title="CSRF">Back Home</a> \
+  <p>data is being processed</p> \
+  </body> \
+  </html>`
+  // res.send(showdata);
+  setTimeout(() => {
+    res.send(showdata);
+  }, 10);
+
+  console.log(req.body._csrf);
+  // console.log(`input1 :${req.body.input1}, input2 : ${req.body.input2}`);
 });
 
 app.use(router);
 
-app.listen(port);
+app.listen(port, '192.168.2.54');
 console.log('Create server listening ' + port);

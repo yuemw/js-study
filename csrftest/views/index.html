@@ -4,22 +4,75 @@
  * @Autor: ymw
  * @Date: 2021-04-21 14:41:45
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-22 16:37:30
+ * @LastEditTime: 2021-04-30 09:24:41
 -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CSRF Test</title>
-    <meta content="<%= csrfToken %>" name="csrf-token">
-  </head>
-  <body>
-    <form method="post" action="/process" class="ng-pristine ng-valid">
-      <input value="value" name="input1">
-      <input value="value2" name="input2">
-      <input type="hidden" value=<%= csrfToken %> name="_csrf">  
-      <button type="submit">submit</button>
-   </form>
 
-   <p><%= csrfToken %></p>
-  </body>
+<head>
+  <title>CSRF Test</title>
+  <meta content="<%= csrfToken %>" name="csrf-token">
+</head>
+
+<body>
+  <p>CSRF Check</p>
+  <form method="post" action="/process" class="ng-pristine ng-valid">
+    Input1: <input type="text" value="" name="input1"><br>
+    Input2: <input type="text" value="" name="input2"><br>
+    <input type="hidden" value=<%= csrfToken %> name="_csrf">
+    <button type="submit">submit</button>
+  </form>
+
+  <p><%= csrfToken %></p>
+
+  <script language="JavaScript">
+    //Ajax 数据发送测试函数
+    function postData() {
+      var formData = new FormData();
+      formData.append('input1', '66');
+      formData.append('input2', '77');
+
+      //得到xhr对象
+      var xhr = null;
+      if (XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+
+      }
+      xhr.open("post", 'mydata', true);
+      // 设置请求头  需在open后send前
+      // xhr.setRequestHeader("CSRF-Token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+      xhr.setRequestHeader("CSRF-Token", getCookie('_csrf'));
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send(formData);
+
+      //从cookie中获取token，此处token值有问题
+      function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+          //获取cookie名称加=的索引值
+          var c_start = document.cookie.indexOf(c_name + "=");
+          if (c_start != -1) {
+            //获取cookie名称对应值的开始索引值
+            c_start = c_start + c_name.length + 1
+            //从c_start位置开始找第一个分号的索引值，也就是cookie名称对应值的结束索引值
+            c_end = document.cookie.indexOf(";", c_start)
+            //如果找不到，说明是cookie名称对应值的结束索引值就是cookie的长度
+            if (c_end == -1) {
+              c_end = document.cookie.length
+            }
+            //获取cookie名称对应的值，并返回
+            let mycookie = unescape(document.cookie.substring(c_start, c_end));
+            console.log(mycookie);
+            return mycookie;
+          }
+        }
+        return "" //不存在返回空字符串
+      }
+    }
+
+  </script>
+  <button type="button" , onclick="postData()"> jump</button><br>
+</body>
+
 </html>

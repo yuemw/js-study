@@ -4,7 +4,7 @@
  * @Autor: lhl
  * @Date: 2020-07-17 21:17:15
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-21 15:44:09
+ * @LastEditTime: 2021-04-23 11:15:13
  */
 var express = require('express');
 var fs = require('fs');
@@ -37,12 +37,6 @@ router.post('/changed', function(req, res, next){
   console.log(response);
   
   res.send(JSON.stringify(response));
-  res.end();
-})
-
-router.post('/process', function(req, res, next){
-  
-  res.send('data is being processed')
   res.end();
 })
 

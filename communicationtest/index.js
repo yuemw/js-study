@@ -4,10 +4,12 @@
  * @Autor: ymw
  * @Date: 2020-07-17 11:08:06
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-21 09:55:39
+ * @LastEditTime: 2021-07-23 16:52:35
  */
 //入口文件
 // require('./webservice/webserveice');
 // require('./http/httpserver');
-// require('./tcp/server');
-require('./express/bin/www');
+// require('./http/httpclient');
+// require('./tcp/client');
+// require('./express/bin/www');
+

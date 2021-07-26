@@ -4,16 +4,21 @@
  * @Autor: ymw
  * @Date: 2021-03-25 17:26:37
  * @LastEditors: ymw
- * @LastEditTime: 2021-04-20 11:47:46
+ * @LastEditTime: 2021-06-11 15:33:14
  */
 
 const net = require('net');
-const port = 8008;
-const socket = net.connect({port}, '192.168.3.18', function processData(){
+const port = 8989;
+const socket = net.connect({port}, '127.0.0.1', function processData(){
     console.log('clinet connected!');
     socket.write('aaaaaaaaaaaaaaaaaa');
-    socket.write('bbbbbbbbbbbbbbbbbb');
+    setInterval(() => {
+        socket.write('bbbbbbbbbbbbbbbbbb');
+    }, 2000)
 
+    socket.on('data', (data) => {
+        console.log(data);
+    })
     socket.on('end', function(){
         console.log('socket ended');
     });

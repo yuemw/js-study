@@ -4,7 +4,7 @@
  * @Autor: ymw
  * @Date: 2021-03-25 17:26:25
  * @LastEditors: ymw
- * @LastEditTime: 2021-07-15 11:50:51
+ * @LastEditTime: 2021-07-29 16:55:10
  */
 
 const { clearInterval } = require("timers");
@@ -33,7 +33,8 @@ const { clearInterval } = require("timers");
 // let pathstr = 'C:/Users/Lenovo/Desktop/配置文件损坏导致计算组态和数据源组态打不开问题复现/14：24/kingfusion3.6/kingdevopscenter3.6/exe/kingcalculation/config/externalConfig.json';
 // let data1 =  fs.readFileSync(pathstr, 'utf8');
 
-require('./filewatcher/filewatcher')
+// require('./filewatcher/filewatcher');
+require('./csvparse/csvhelper')
 
 
 console.log('data')

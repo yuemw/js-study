@@ -13,6 +13,8 @@
             // ],
             "runtimeExecutable": "D:/software/NodeJs/node.exe",
             "runtimeArgs": ["--experimental-worker"],
+            // "runtimeArgs": ["--experimental-worker", "--expose-gc"],
+            // "autoAttachChildProcesses":true,
             "program": "${workspaceFolder}/index.js"
         }
     ]
